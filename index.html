@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Vaccination rates across the world</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="page">
+        <h1>Vaccination rates across the world</h1>
+        <p class="subtitle">
+            The map shows the vaccination rate of various diseases across the world.
+            Select a year and disease type to see how vaccination rates change across regions.
+        </p>
+
+        <div class="controls">
+            <label for="vaccineSelect">Vaccine:</label>
+            <select id="vaccineSelect"></select>
+
+            <label for="yearSelect">Year:</label>
+            <select id="yearSelect"></select>
+            <button id="playButton" type="button">▶ Play</button>
+        </div>
+
+
+        <div id="map"></div>
+        <div id="mapTooltip" class="map-tooltip"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
