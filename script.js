@@ -28,6 +28,18 @@ const map = L.map("map", {
   maxBoundsViscosity: 1.0
 });
 
+const InfoButton = L.Control.extend({
+  options: { position: "topright" },
+  onAdd: function () {
+    const btn = L.DomUtil.create("button", "leaflet-control info-button");
+    btn.textContent = "i";
+    btn.onclick = () => openInfoModal();
+    return btn;
+  }
+});
+map.addControl(new InfoButton());
+
+
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   minZoom: 2,
   maxZoom: 50,
@@ -67,10 +79,10 @@ function getColor(rate) {
       : rate > 70
         ? "#3fdc3f"
         : rate > 60
-          ? "#8ff28f"
+          ? "#7be87b"
           : rate >= 1
-            ? "#b4f5b4"
-            : "#b4f5b4";
+            ? "#c8f7c8"
+            : "#c8f7c8";
 }
 
 function getIsoCode(feature) {
@@ -302,3 +314,22 @@ function toggleAnimation() {
 }
 
 playButton.addEventListener("click", toggleAnimation);
+
+const infoModal = document.getElementById("infoModal");
+const modalClose = document.getElementById("modalClose");
+
+function openInfoModal() {
+  infoModal.classList.add("visible");
+}
+
+function closeInfoModal() {
+  infoModal.classList.remove("visible");
+}
+
+modalClose.addEventListener("click", closeInfoModal);
+
+infoModal.addEventListener("click", (e) => {
+  if (e.target.classList.contains("modal-backdrop")) {
+    closeInfoModal();
+  }
+});
